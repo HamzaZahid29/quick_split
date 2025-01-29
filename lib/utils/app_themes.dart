@@ -24,7 +24,7 @@ class AppThemes {
     foregroundColor: lightAccentColor,
     backgroundColor: accentColor,
     iconTheme: IconThemeData(color: lightAccentColor),
-    titleTextStyle: GoogleFonts.roboto(
+    titleTextStyle: GoogleFonts.poppins(
       textStyle: TextStyle(
           fontSize: 20, fontWeight: FontWeight.w700, color: lightAccentColor),
     ),
@@ -40,14 +40,14 @@ class AppThemes {
     appBarTheme: appbarTheme2,
 
     // Text Styles
-    textTheme: GoogleFonts.robotoTextTheme(
+    textTheme: GoogleFonts.poppinsTextTheme(
       ThemeData.dark().textTheme,
     ).apply(
       bodyColor: lightAccentColor,
       displayColor: lightAccentColor,
     ),
 
-    primaryTextTheme: GoogleFonts.robotoTextTheme(
+    primaryTextTheme: GoogleFonts.poppinsTextTheme(
       ThemeData.dark().primaryTextTheme,
     ).apply(
       bodyColor: lightAccentColor,
@@ -59,14 +59,14 @@ class AppThemes {
         foregroundColor: Colors.white,
         backgroundColor: primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        textStyle: GoogleFonts.roboto(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
 
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryColor,
-        textStyle: GoogleFonts.roboto(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
 
@@ -74,7 +74,7 @@ class AppThemes {
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryColor,
         side: BorderSide(color: primaryColor),
-        textStyle: GoogleFonts.roboto(fontSize: 16),
+        textStyle: GoogleFonts.poppins(fontSize: 16),
       ),
     ),
 
@@ -92,7 +92,7 @@ class AppThemes {
         borderRadius: BorderRadius.circular(30),
         borderSide: BorderSide(color: secondaryColor),
       ),
-      hintStyle: GoogleFonts.roboto(color: secondaryColor),
+      hintStyle: GoogleFonts.poppins(color: secondaryColor),
     ),
 
     colorScheme: ColorScheme.dark(

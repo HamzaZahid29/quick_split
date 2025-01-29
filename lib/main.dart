@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quicksplit/utils/app_constants.dart';
 import 'package:quicksplit/utils/app_themes.dart';
-import 'package:quicksplit/views/pages/home.dart';
+import 'package:quicksplit/utils/router/app_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: AppConstants.appName,
       theme: AppThemes.lightTheme,
-      home: HomePage(),
+      routerConfig: router,
     );
   }
 }

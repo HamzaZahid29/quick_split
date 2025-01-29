@@ -9,6 +9,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppConstants.appName),
       ),
+      body: Padding(padding: EdgeInsets.all(10), child: Column(
+        children: [
+          Container(
+            
+          )
+        ],
+      ),)
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:quicksplit/utils/router/static_app_routes.dart';
 
 import '../../views/pages/budget_splitting_input_page.dart';
+import '../../views/pages/choose_participants_screen.dart';
 import '../../views/pages/home.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -43,6 +44,15 @@ final router = GoRouter(
       pageBuilder: (context, state) {
         return CustomTransitionPage(
           child: BudgetSplittingInputPage(),
+          transitionsBuilder: slideTransitionBuilder
+        );
+      },),
+    GoRoute(
+      name: StaticAppRoutes.chooseParticipantsScreen,
+      path: StaticAppRoutes.chooseParticipantsScreen,
+      pageBuilder: (context, state) {
+        return CustomTransitionPage(
+          child: ChooseParticipantsScreen(),
           transitionsBuilder: slideTransitionBuilder
         );
       },),

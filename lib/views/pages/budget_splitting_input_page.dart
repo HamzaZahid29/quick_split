@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:info_widget/info_widget.dart';
 import 'package:quicksplit/utils/app_text_styles.dart';
 import 'package:intl/intl.dart';
 import 'package:quicksplit/utils/app_themes.dart';
+import 'package:quicksplit/utils/router/static_app_routes.dart';
 
 class BudgetSplittingInputPage extends StatefulWidget {
   const BudgetSplittingInputPage({super.key});
@@ -115,12 +117,16 @@ class _BudgetSplittingInputPageState extends State<BudgetSplittingInputPage> {
                   ),
                   InfoWidget(
                       infoText:
-                      '''You can choose people who are going to split this budget with you can either choose from an existing group or add people separately.''',
+                          '''You can choose people who are going to split this budget with you can either choose from an existing group or add people separately.''',
                       iconData: CupertinoIcons.info,
                       iconColor: AppThemes.primaryColor)
                 ],
               ),
-              OutlinedButton(onPressed: (){}, child: Text('Choose Participants'))
+              OutlinedButton(
+                  onPressed: () {
+                    context.pushNamed(StaticAppRoutes.chooseParticipantsScreen);
+                  },
+                  child: Text('Choose Participants'))
             ],
           ),
         ),

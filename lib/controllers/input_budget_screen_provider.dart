@@ -21,6 +21,7 @@ class InputBudgetScreenProvider extends ChangeNotifier {
   final NumberFormat formatter = NumberFormat('#,###');
   final int maxValue = 1000000000;
 
+
   InputBudgetScreenProvider() {
     controller.addListener(_formatNumber);
   }

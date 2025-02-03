@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:quicksplit/utils/app_text_styles.dart';
 import 'package:quicksplit/utils/app_themes.dart';
 
+import '../../controllers/input_budget_screen_provider.dart';
 import '../widgets/choose_participants_expansion_tile.dart';
 
 class ChooseParticipantsScreen extends StatelessWidget {
@@ -10,6 +13,8 @@ class ChooseParticipantsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<InputBudgetScreenProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose Participants'),
@@ -53,7 +58,10 @@ class ChooseParticipantsScreen extends StatelessWidget {
                     title: 'My Friends',
                     date: '1/12/2024',
                     participantNames: ['Hamza', 'Raees', 'Faseeh', 'Ahmed'],
-                    voidCallback: () {},
+                    voidCallback: () {
+                      provider.setSelectedParticipants(['Hamza', 'Raees', 'Faseeh', 'Ahmed']);
+                      context.pop();
+                    },
                   ),
                   ChooseParticipantsExpansionTile(
                     title: 'My Friends',

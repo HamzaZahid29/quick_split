@@ -16,6 +16,7 @@ class BudgetSplittingInputPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PageController pageController = PageController();
     final provider = Provider.of<InputBudgetScreenProvider>(context);
 
     return Scaffold(
@@ -27,6 +28,8 @@ class BudgetSplittingInputPage extends StatelessWidget {
           children: [
             Expanded(
               child: PageView(
+                controller: pageController,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   SingleChildScrollView(
                     child: Padding(
@@ -54,14 +57,14 @@ class BudgetSplittingInputPage extends StatelessWidget {
                               ),
                               InfoWidget(
                                   infoText:
-                                  '''This includes each and everything that has been spent including extras taxes tips and other stuff.''',
+                                      '''This includes each and everything that has been spent including extras taxes tips and other stuff.''',
                                   iconData: CupertinoIcons.info,
                                   iconColor: AppThemes.primaryColor)
                             ],
                           ),
                           GestureDetector(
-                            onTap: () =>
-                                FocusScope.of(context).requestFocus(FocusNode()),
+                            onTap: () => FocusScope.of(context)
+                                .requestFocus(FocusNode()),
                             child: TextField(
                               controller: provider.controller,
                               textAlign: TextAlign.center,
@@ -88,49 +91,49 @@ class BudgetSplittingInputPage extends StatelessWidget {
                               ),
                               InfoWidget(
                                   infoText:
-                                  '''You can choose people who are going to split this budget with you can either choose from an existing group or add people separately.''',
+                                      '''You can choose people who are going to split this budget with you can either choose from an existing group or add people separately.''',
                                   iconData: CupertinoIcons.info,
                                   iconColor: AppThemes.primaryColor)
                             ],
                           ),
                           provider.selectedParticipants.length == 0
                               ? OutlinedButton(
-                              onPressed: () {
-                                context.pushNamed(
-                                    StaticAppRoutes.chooseParticipantsScreen);
-                              },
-                              child: Text('Choose Participants'))
+                                  onPressed: () {
+                                    context.pushNamed(StaticAppRoutes
+                                        .chooseParticipantsScreen);
+                                  },
+                                  child: Text('Choose Participants'))
                               : SizedBox(),
                           provider.selectedParticipants.length == 0
                               ? SizedBox()
                               : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 200,
-                                child: ListView.builder(
-                                    itemCount:
-                                    provider.selectedParticipants.length,
-                                    itemBuilder: (_, index) =>
-                                        ParticipantExpansionNameTile(
-                                            title:
-                                            provider.selectedParticipants[
-                                            index])),
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: OutlinedButton(
-                                        onPressed: () {
-                                          context.pushNamed(StaticAppRoutes
-                                              .chooseParticipantsScreen);
-                                        },
-                                        child: Text('Change List')),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 200,
+                                      child: ListView.builder(
+                                          itemCount: provider
+                                              .selectedParticipants.length,
+                                          itemBuilder: (_, index) =>
+                                              ParticipantExpansionNameTile(
+                                                  title: provider
+                                                          .selectedParticipants[
+                                                      index])),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: OutlinedButton(
+                                              onPressed: () {
+                                                context.pushNamed(StaticAppRoutes
+                                                    .chooseParticipantsScreen);
+                                              },
+                                              child: Text('Change List')),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
                         ],
                       ),
                     ),
@@ -149,11 +152,11 @@ class BudgetSplittingInputPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Total Budget',
+                                      'Choose Extra Charges',
                                       style: AppTextStyles.heading3,
                                     ),
                                     Text(
-                                      '(Including extras)',
+                                      '(Per Person)',
                                       style: AppTextStyles.caption,
                                     ),
                                   ],
@@ -161,81 +164,9 @@ class BudgetSplittingInputPage extends StatelessWidget {
                               ),
                               InfoWidget(
                                   infoText:
-                                  '''This includes each and everything that has been spent including extras taxes tips and other stuff.''',
+                                      '''Now just choose value of extra amount on participant. That was previously included in the total budget.''',
                                   iconData: CupertinoIcons.info,
                                   iconColor: AppThemes.primaryColor)
-                            ],
-                          ),
-                          GestureDetector(
-                            onTap: () =>
-                                FocusScope.of(context).requestFocus(FocusNode()),
-                            child: TextField(
-                              controller: provider.controller,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.digitsOnly
-                              ],
-                              style: AppTextStyles.heading1,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(20),
-                                filled: true,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  'Choose Participants for the Split',
-                                  style: AppTextStyles.heading3,
-                                ),
-                              ),
-                              InfoWidget(
-                                  infoText:
-                                  '''You can choose people who are going to split this budget with you can either choose from an existing group or add people separately.''',
-                                  iconData: CupertinoIcons.info,
-                                  iconColor: AppThemes.primaryColor)
-                            ],
-                          ),
-                          provider.selectedParticipants.length == 0
-                              ? OutlinedButton(
-                              onPressed: () {
-                                context.pushNamed(
-                                    StaticAppRoutes.chooseParticipantsScreen);
-                              },
-                              child: Text('Choose Participants'))
-                              : SizedBox(),
-                          provider.selectedParticipants.length == 0
-                              ? SizedBox()
-                              : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 200,
-                                child: ListView.builder(
-                                    itemCount:
-                                    provider.selectedParticipants.length,
-                                    itemBuilder: (_, index) =>
-                                        ParticipantExpansionNameTile(
-                                            title:
-                                            provider.selectedParticipants[
-                                            index])),
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: OutlinedButton(
-                                        onPressed: () {
-                                          context.pushNamed(StaticAppRoutes
-                                              .chooseParticipantsScreen);
-                                        },
-                                        child: Text('Change List')),
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ],
@@ -251,7 +182,11 @@ class BudgetSplittingInputPage extends StatelessWidget {
                 children: [
                   Expanded(
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            pageController.nextPage(
+                                duration: Duration(milliseconds: 400),
+                                curve: Curves.easeInOut);
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
